@@ -1,0 +1,58 @@
+/*Generate 15 random numbers from 1 to 100 and store it in an int array. Write a program to
+display the numbers stored at odd indexes by thread1 and display numbers stored at even
+indexes by thread2.*/
+
+import java.util.*;
+import java.util.stream.IntStream;
+class TestEven extends Thread
+ {
+    int arr[]=new int[15];
+    TestEven(int arr1[])
+  {
+       this.arr=arr1;
+  }
+      public void run()
+     {
+       for(int i=0;i<15;i=i+1)
+         {
+           if(arr[i]%2==0)
+          {
+             System.out.println("Number at the Even index: "+arr[i]);
+           } 
+ }
+  }
+}
+  class TestOdd extends Thread
+    {
+     int arr[]=new int[15];
+    TestOdd(int arr1[])
+    {
+        this.arr=arr1;
+  }
+  public void run()
+            {
+                for (int i = 0; i < 15; i = i + 1)
+                {
+                    if(arr[i]%2!=0)
+                    {
+                        System.out.println("Number at the odd index: "+arr[i]);
+                    }
+                }
+
+
+            }
+        }
+public class Code_2
+ {
+     public static void main(String[] args)
+            {
+     int[]  randomIntsArray = IntStream.generate(() -> new Random().nextInt(15)).limit(100).toArray();
+                TestEven t1=new TestEven(randomIntsArray);
+                TestOdd t2=new TestOdd(randomIntsArray);
+                t1.start();
+                t2.start();
+               
+
+
+            }
+        }
