@@ -1,0 +1,31 @@
+/*Write a program to create three threads ‘FIRST’, ‘SECOND’, ‘THIRD’. Set the
+priority of the ‘FIRST’ thread to 3, the ‘SECOND’ thread to 5(default) and the
+‘THIRD’ thread to 7.*/
+
+class TestPriority extends Thread//TestPriority class extends Thread class
+{
+    public void run()
+    {
+        System.out.println("Running Thread is: "+Thread.currentThread().getName());//Printing Current Thread Name
+        System.out.println("Priority of Running Thread is: "+Thread.currentThread().getPriority());//Printing the Priority of the current Thread
+    }
+}
+
+public class Code_4
+{
+    public static void main(String[] args)
+    {
+        TestPriority t1=new TestPriority();
+        TestPriority t2=new TestPriority();
+        TestPriority t3=new TestPriority();
+        t1.setPriority(3);
+        t2.setPriority(Thread.NORM_PRIORITY);
+        t3.setPriority(7);
+        t1.start();
+        t2.start();
+        t3.start();
+        
+
+
+    }
+}
