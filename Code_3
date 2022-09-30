@@ -1,0 +1,29 @@
+/*Write a program to increment the value of one variable by one and display it after one
+second using thread using sleep() method. */
+
+class Test extends Thread//Test class extends Thread class
+{
+    int i=2;
+    public void run()//Creating a Thread t1
+    {
+        try
+        {
+            Thread.sleep(1000);//Calling sleep() method
+            System.out.println("Value of i after sleep() method is executed: "+(i+1));
+        }
+        catch(InterruptedException e)
+        {
+            System.out.println("Interrupted Exception");
+        }
+    }
+}
+public class Code_3
+{
+     public static void main(String[] args)
+    {
+        Test t=new Test();//Creating a Thread t
+        t.start();//Executing Thread t
+        System.out.println("In main method");
+    
+    }
+}
